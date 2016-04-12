@@ -15,26 +15,27 @@
   </head>
   <body>
 
-      <header>
+      <header class="container">
 	  <div class="row">
         <div class="column column-25">
-          <img width="80" height="80" src="https://github.com/LeeU1911/OrderIt/raw/master/Designs/icon/nsr-app_icon.png"/>
+          <img width="120" height="120" src="https://github.com/LeeU1911/OrderIt/raw/master/Designs/icon/nsr-app_icon.png"/>
         </div>
         <div class="column column-75">
           <h1>OrderIt</h1>
           <p>Order in a heartbeat</p>
         </div>
 		</div>
-      </header>
-
+		
       <div id="banner">
         <span id="logo"></span>
 
         <a href="https://github.com/LeeU1911/orderit" class="button fork"><strong>View On GitHub</strong></a>
 
       </div><!-- end banner -->
+      </header>
 
-    <div class="wrapper">
+
+    <div class="container">
       <nav>
         <ul></ul>
       </nav>
@@ -46,7 +47,7 @@
 			<input id="email" type="text" placeholder="Enter your email address"/>
 		</div>
 		<div class="column">
-			<button type="submit" id="submit" >Submit</button>
+			<button type="submit" id="submit" onclick="submit()">Submit</button>
 		</div>
 	  </div>
 
@@ -56,6 +57,24 @@
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-
+	<script type="text/javascript">
+		function submit(){
+			var emailInput = $("#email");
+			var email = emailInput.val();
+			emailInput.val("");
+			$.ajax({
+				method: "POST",
+				url: "https://orderit-website.herokuapp.com/subscribe",
+				context: document.body,
+				data: email,
+				success: function(){
+				  alert("success");
+				},
+				error: function(){
+					alert("error");
+				}
+			});
+		}
+	</script>
   </body>
 </html>
