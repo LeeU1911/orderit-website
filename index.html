@@ -61,14 +61,13 @@
 		function submit(){
 			var emailInput = $("#email");
 			var email = emailInput.val();
-			emailInput.val("");
 			$.ajax({
 				method: "POST",
 				url: "https://orderit-website.herokuapp.com/subscribe",
-				context: document.body,
-				data: email,
+				data: {email: email},
 				success: function(){
 				  alert("success");
+					emailInput.val("");
 				},
 				error: function(){
 					alert("error");
