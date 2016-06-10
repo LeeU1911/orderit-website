@@ -46,7 +46,7 @@ $(document).ready(function(){
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		console.log("account created successfully!");
-		window.location.href = "staffInfo.html";
+		window.location.href = "success.html";
 		//set bizId
 		bizId = response.businessId
 	  }, "json").fail(function() {
@@ -61,7 +61,7 @@ $(document).ready(function(){
 	  console.log("submitting staff data");
 	  var staffName = $("#staffName").val();
 	  $("#bizname2").val(bizName);
-	  var role = $("#role").find(":selected").text();
+	  var roleId = $("#role").find(":selected").val();
 	  var staffPassword = Base64.encode($("#staffPassword").val());
 	  
 	  var formData =  {"staffName": staffName,"businessId":bizId,"roleId":roleId,"staffPassword":staffPassword}
