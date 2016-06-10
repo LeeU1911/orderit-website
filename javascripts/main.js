@@ -45,13 +45,12 @@ $(document).ready(function(){
 	  var formData =  {"ownerName": ownerName,"businessName":businessName,"email":email,"password":password}
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
-		alert("account created successfully!");
-		alert(JSON.stringify(response));
+		console.log("account created successfully!");
 		window.location.href = "staffInfo.html";
 		//set bizId
 		bizId = response.businessId
 	  }, "json").fail(function() {
-		alert( "error" );		
+		console.log( "error" );		
 		//window.location.href = "staffInfo.html";
 	  })
 	});
@@ -68,11 +67,11 @@ $(document).ready(function(){
 	  var formData =  {"staffName": staffName,"businessId":bizId,"role":role,"staffPassword":staffPassword}
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
-		alert("staff created successfully!");
+		console.log("staff created successfully!");
 		window.location.href = "success.html";
 	  }, "json").fail(function() {
-		alert( "error" );		
-		window.location.href = "success.html";
+		console.log( "error" );		
+		//window.location.href = "success.html";
 	  })
 	});
 });
