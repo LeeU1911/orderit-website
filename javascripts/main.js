@@ -30,15 +30,12 @@ $(document).ready(function(){
   sectionHeight();
   
   $('img').load(sectionHeight);
-  var bizName;
-  var bizId;
   $('#accountSubmit').click(function submit(e) {
 	e.preventDefault();
 		var dataUrl = "http://orderitbackend.herokuapp.com/register";
 	  console.log("submitting account data");
 	  var ownerName = $("#ownername").val();
 	  var businessName = $("#bizname").val();
-	  bizName = businessName;
 	  var email = $("#email").val();
 	  var password = Base64.encode($("#password").val());
 	  
@@ -47,8 +44,9 @@ $(document).ready(function(){
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		console.log("account created successfully!");
 		window.location.href = "staffInfo.html";
-		//set bizId
-		bizId = response.businessId
+		//set bizId and bizName
+		localStorage.setItem("bizId", response.businessid);
+		localStorage.setItem("bizName", businessName);
 	  }, "json").fail(function() {
 		console.log( "error" );		
 		//window.location.href = "staffInfo.html";
@@ -57,14 +55,13 @@ $(document).ready(function(){
 	
 	$('#staffSubmit').click(function submit(e) {
 		e.preventDefault();
-		var dataUrl = "https://orderit-server.herokuapp.com/staff";
+		var dataUrl = "https://orderitbackend.herokuapp.com/registerStaff";
 	  console.log("submitting staff data");
 	  var staffName = $("#staffName").val();
-	  $("#bizname2").val(bizName);
 	  var roleId = $("#role").find(":selected").val();
 	  var staffPassword = Base64.encode($("#staffPassword").val());
-	  
-	  var formData =  {"staffName": staffName,"businessId":bizId,"roleId":roleId,"staffPassword":staffPassword}
+	  var bizId = localStorage.getItem("bizId");
+	  var formData =  {"staffName": staffName,"businessId": parseInt(bizId),"roleId":parseInt(roleId),"staffPassword":staffPassword}
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		console.log("staff created successfully!");
@@ -74,6 +71,8 @@ $(document).ready(function(){
 		//window.location.href = "success.html";
 	  })
 	});
+	
+	 $("#bizName2").val(localStorage.getItem("bizName"));
 });
 
 fixScale = function(doc) {
