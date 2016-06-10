@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Orderit-website by LeeU1911</title>
+	<link rel="stylesheet" href="stylesheets/spectre.min.css" media="screen" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body style="background-color: #3ea9f5; color: white;">
+	<header class="text-center">
+		<!-- <img class="img-responsive" width="120" height="120" src="https://github.com/LeeU1911/OrderIt/raw/master/Designs/icon/nsr-app_icon.png"/> -->
+		<h1>OrderIt</h1>
+	</header>
+	<br/>
+    <section class="container grid-480">
+		<h4 class="text-center">Staff Information</h4>
+		<form>
+			<div class="columns">
+				<div class="column col-6">
+					<div class="form-group">
+						<input class="form-input input-lg" type="text" id="userName" placeholder="User Name" />
+					</div>
+				</div>
+				<div class="column col-6">
+					<div class="form-group">
+						<input class="form-input input-lg" type="text" id="password" placeholder="Password" />
+					</div>
+				</div>
+			</div>
+			<div class="columns">
+				<div class="column col-6">
+					<div class="form-group">
+						<input class="disabled form-input input-lg" type="text" id="businessName" placeholder="Business's Name" />
+					</div>
+				</div>
+				<div class="column col-6">
+					<div class="form-group">
+						<select class="form-select form-input select-lg">
+						  <option value="volvo">Choose a role</option>
+						  <option value="saab">Staff</option>
+						  <option value="mercedes">Admin</option>						  
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary btn-lg" type="submit">Submit</button>
+			</div>
+		</form>
+	</section>
+    
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+	<script type="text/javascript">
+		function submit(){
+			var emailInput = $("#email");
+			var email = emailInput.val();
+			$.ajax({
+				method: "POST",
+				url: "https://orderit-website.herokuapp.com/subscribe",
+				data: {email: email},
+				success: function(){
+				  alert("success");
+					emailInput.val("");
+				},
+				error: function(){
+					alert("error");
+				}
+			});
+		}
+	</script>
+  </body>
+</html>
