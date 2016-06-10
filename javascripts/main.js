@@ -34,7 +34,7 @@ $(document).ready(function(){
   var bizId;
   $('#accountSubmit').click(function submit(e) {
 	e.preventDefault();
-		var dataUrl = "https://orderit-server.herokuapp.com/account";
+		var dataUrl = "http://orderitbackend.herokuapp.com/register";
 	  console.log("submitting account data");
 	  var ownerName = $("#ownername").val();
 	  var businessName = $("#bizname").val();
@@ -46,12 +46,13 @@ $(document).ready(function(){
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		alert("account created successfully!");
-		window.location.href = "staffInfo.html";
+		alert(JSON.stringify(response));
+		//window.location.href = "staffInfo.html";
 		//set bizId
 		bizId = response.businessId
 	  }, "json").fail(function() {
 		alert( "error" );		
-		window.location.href = "staffInfo.html";
+		//window.location.href = "staffInfo.html";
 	  })
 	});
 	
