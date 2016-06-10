@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Orderit-website by LeeU1911</title>
+	<link rel="stylesheet" href="stylesheets/spectre.min.css" media="screen" />
+	<link rel="stylesheet" href="stylesheets/success.css" media="screen" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body style="background-color: #3ea9f5; color: white;">
+	<header class="text-center">
+		<!-- <img class="img-responsive" width="120" height="120" src="https://github.com/LeeU1911/OrderIt/raw/master/Designs/icon/nsr-app_icon.png"/> -->
+		<h1>Order It</h1>
+	</header>
+	<br/>
+    <section class="container grid-480">
+	
+			<div class='message comein' style="">
+			  <div class='check scaledown'>
+				&#10004;
+			  </div>
+			  <p>
+				Success
+			  </p>
+			  <p>
+				Your account has been created successfully.
+			  </p>
+			<img src="./images/get_it_on_googleplay.png" alt="Get it on Google play">
+			</div>		
+	</section>
+    
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+	<script type="text/javascript">
+		function submit(){
+			var emailInput = $("#email");
+			var email = emailInput.val();
+			$.ajax({
+				method: "POST",
+				url: "https://orderit-website.herokuapp.com/subscribe",
+				data: {email: email},
+				success: function(){
+				  alert("success");
+					emailInput.val("");
+				},
+				error: function(){
+					alert("error");
+				}
+			});
+		}
+	</script>
+  </body>
+</html>
