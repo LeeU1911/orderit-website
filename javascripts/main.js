@@ -46,7 +46,7 @@ $(document).ready(function(){
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		console.log("account created successfully!");
-		window.location.href = "success.html";
+		window.location.href = "staffInfo.html";
 		//set bizId
 		bizId = response.businessId
 	  }, "json").fail(function() {
