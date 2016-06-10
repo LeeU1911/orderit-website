@@ -30,6 +30,23 @@ $(document).ready(function(){
   sectionHeight();
   
   $('img').load(sectionHeight);
+  
+  $('#accountSubmit').click(function submit(e) {
+	e.preventDefault();
+		var dataUrl = "https://orderit-server.herokuapp.com/account";
+	  console.log("submitting form data");
+	  var ownerName = $("#ownername").val();
+	  var businessName = $("#bizname").val();
+	  var email = $("#email").val();
+	  var password = $("#password").val();
+	  var formData =  {"owner-name": ownerName,"business-name":businessName,"email":email,"password":password}
+	  console.log(JSON.stringify(formData));
+	  $.post(dataUrl, JSON.stringify(formData), function(response){
+		alert("account created successfully!");
+	  }, "json").fail(function() {
+		alert( "error" );
+	  })
+	});
 });
 
 fixScale = function(doc) {
@@ -51,3 +68,20 @@ fixScale = function(doc) {
     doc[addEvent](type, fix, true);
   }
 };
+
+function submit(){
+	var emailInput = $("#email");
+	var email = emailInput.val();
+	$.ajax({
+		method: "POST",
+		url: "https://orderit-website.herokuapp.com/subscribe",
+		data: {email: email},
+		success: function(){
+		  alert("success");
+			emailInput.val("");
+		},
+		error: function(){
+			alert("error");
+		}
+	});
+}
