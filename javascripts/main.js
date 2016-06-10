@@ -43,7 +43,7 @@ $(document).ready(function(){
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		console.log("account created successfully!");
-		window.location.href = "staffInfo.html";
+		window.location.href = "success.html";
 		//set bizId and bizName
 		localStorage.setItem("bizId", response.businessid);
 		localStorage.setItem("bizName", businessName);
