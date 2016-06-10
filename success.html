@@ -12,14 +12,20 @@
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+	<style type="text/css">
+	body, html {
+		
+  height: 100%;
+  font-size: 20px;
+	  font-family: Source Sans Pro;
+	}
+	</style>
   </head>
   <body style="background-color: #3ea9f5; color: white;">
 	<header class="text-center">
 		<!-- <img class="img-responsive" width="120" height="120" src="https://github.com/LeeU1911/OrderIt/raw/master/Designs/icon/nsr-app_icon.png"/> -->
 		<h1>Order It</h1>
 	</header>
-	<br/>
     <section class="container grid-480">
 	
 			<div class='message comein' style="">
@@ -37,23 +43,5 @@
 	</section>
     
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-	<script type="text/javascript">
-		function submit(){
-			var emailInput = $("#email");
-			var email = emailInput.val();
-			$.ajax({
-				method: "POST",
-				url: "https://orderit-website.herokuapp.com/subscribe",
-				data: {email: email},
-				success: function(){
-				  alert("success");
-					emailInput.val("");
-				},
-				error: function(){
-					alert("error");
-				}
-			});
-		}
-	</script>
   </body>
 </html>

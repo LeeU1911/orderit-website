@@ -1,7 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
 body, html {
-  height: 100%;
-  font-size: 20px;
   font-family: Source Sans Pro;
 }
 
@@ -23,27 +21,6 @@ body, html {
   display: none;
 }
 
-#go {
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  color: white;
-  border: 0;
-  background: #71c341;
-  width: 100px;
-  height: 30px;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: background 0.2s ease;
-  outline: none;
-}
-#go:hover {
-  background: #8ecf68;
-}
-#go:active {
-  background: #5a9f32;
-}
 
 .message {
   position: absolute;

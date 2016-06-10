@@ -30,22 +30,48 @@ $(document).ready(function(){
   sectionHeight();
   
   $('img').load(sectionHeight);
-  
+  var bizName;
+  var bizId;
   $('#accountSubmit').click(function submit(e) {
 	e.preventDefault();
 		var dataUrl = "https://orderit-server.herokuapp.com/account";
-	  console.log("submitting form data");
+	  console.log("submitting account data");
 	  var ownerName = $("#ownername").val();
 	  var businessName = $("#bizname").val();
+	  bizName = businessName;
 	  var email = $("#email").val();
 	  var password = Base64.encode($("#password").val());
 	  
-	  var formData =  {"owner-name": ownerName,"business-name":businessName,"email":email,"password":password}
+	  var formData =  {"ownerName": ownerName,"businessName":businessName,"email":email,"password":password}
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		alert("account created successfully!");
+		window.location.href = "staffInfo.html";
+		//set bizId
+		bizId = response.businessId
 	  }, "json").fail(function() {
-		alert( "error" );
+		alert( "error" );		
+		window.location.href = "staffInfo.html";
+	  })
+	});
+	
+	$('#staffSubmit').click(function submit(e) {
+		e.preventDefault();
+		var dataUrl = "https://orderit-server.herokuapp.com/staff";
+	  console.log("submitting staff data");
+	  var staffName = $("#staffName").val();
+	  $("#bizname2").val(bizName);
+	  var role = $("#role").find(":selected").text();
+	  var staffPassword = Base64.encode($("#staffPassword").val());
+	  
+	  var formData =  {"staffName": staffName,"businessId":bizId,"role":role,"staffPassword":staffPassword}
+	  console.log(JSON.stringify(formData));
+	  $.post(dataUrl, JSON.stringify(formData), function(response){
+		alert("staff created successfully!");
+		window.location.href = "success.html";
+	  }, "json").fail(function() {
+		alert( "error" );		
+		window.location.href = "success.html";
 	  })
 	});
 });
