@@ -47,7 +47,7 @@ $(document).ready(function(){
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		alert("account created successfully!");
 		alert(JSON.stringify(response));
-		//window.location.href = "staffInfo.html";
+		window.location.href = "staffInfo.html";
 		//set bizId
 		bizId = response.businessId
 	  }, "json").fail(function() {
