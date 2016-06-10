@@ -64,7 +64,7 @@ $(document).ready(function(){
 	  var role = $("#role").find(":selected").text();
 	  var staffPassword = Base64.encode($("#staffPassword").val());
 	  
-	  var formData =  {"staffName": staffName,"businessId":bizId,"role":role,"staffPassword":staffPassword}
+	  var formData =  {"staffName": staffName,"businessId":bizId,"roleId":roleId,"staffPassword":staffPassword}
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		console.log("staff created successfully!");
