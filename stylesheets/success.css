@@ -1,0 +1,33 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+body, html {
+  font-family: Source Sans Pro;
+}
+.message {
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  font-weight: 300;
+  color: #2c2928;
+}
+.message .check {
+  position: absolute;
+  top: calc(6rem + 100px);
+  left: calc(50% - 60px);
+  width: 120px;
+  height: 110px;
+  background: #71c341;
+  color: white;
+  font-size: 7.6rem;
+  border-radius: 50%;
+}
+.message p {
+  font-size: 2.2rem;
+  margin: 25px 0px;
+  padding: 0;
+}
+.message p:nth-child(2) {
+  font-size: 4.6rem;
+  margin: 40px 0px 0px 0px;
+}
