@@ -42,16 +42,17 @@ $(document).ready(function(){
 	  
 	  var formData =  {"ownerName": ownerName,"businessName":businessName,"email":email,"password":password}
 	  console.log(JSON.stringify(formData));
-	  // $.post(dataUrl, JSON.stringify(formData), function(response){
-		// console.log("account created successfully!");
-		// window.location.href = "success.html";
-		// //set bizId and bizName
-		// localStorage.setItem("bizId", response.businessid);
-		// localStorage.setItem("bizName", businessName);
-	  // }, "json").fail(function() {
-		// console.log( "error" );		
-		// //window.location.href = "staffInfo.html";
-	  // });
+	  $.post(dataUrl, JSON.stringify(formData), function(response){
+		console.log("account created successfully!");
+		window.location.href = "success.html";
+		//window.location.href = "staffInfo.html";
+		//set bizId and bizName
+		localStorage.setItem("bizId", response.businessid);
+		localStorage.setItem("bizName", businessName);
+	  }, "json").fail(function() {
+		console.log( "error" );		
+		//window.location.href = "staffInfo.html";
+	  });
 	});
 	
 	$('#staffSubmit').click(function submit(e) {
