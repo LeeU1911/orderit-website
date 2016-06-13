@@ -44,6 +44,7 @@ $(document).ready(function(){
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		console.log("account created successfully!");
+		$(this).removeClass("loading");
 		window.location.href = "success.html";
 		//window.location.href = "staffInfo.html";
 		//set bizId and bizName
@@ -51,6 +52,7 @@ $(document).ready(function(){
 		localStorage.setItem("bizName", businessName);
 	  }, "json").fail(function() {
 		console.log( "error" );		
+		$(this).removeClass("loading");
 		//window.location.href = "staffInfo.html";
 	  });
 	});
@@ -68,9 +70,11 @@ $(document).ready(function(){
 	  console.log(JSON.stringify(formData));
 	  $.post(dataUrl, JSON.stringify(formData), function(response){
 		console.log("staff created successfully!");
+		$(this).removeClass("loading");
 		window.location.href = "success.html";
 	  }, "json").fail(function() {
 		console.log( "error" );		
+		$(this).removeClass("loading");
 		//window.location.href = "success.html";
 	  })
 	});
