@@ -32,6 +32,7 @@ $(document).ready(function(){
   $('img').load(sectionHeight);
   $('#accountSubmit').click(function submit(e) {
 	e.preventDefault();
+	$(this).addClass("loading");
 		var dataUrl = "http://orderitbackend.herokuapp.com/register";
 	  console.log("submitting account data");
 	  var ownerName = $("#ownername").val();
@@ -41,20 +42,21 @@ $(document).ready(function(){
 	  
 	  var formData =  {"ownerName": ownerName,"businessName":businessName,"email":email,"password":password}
 	  console.log(JSON.stringify(formData));
-	  $.post(dataUrl, JSON.stringify(formData), function(response){
-		console.log("account created successfully!");
-		window.location.href = "success.html";
-		//set bizId and bizName
-		localStorage.setItem("bizId", response.businessid);
-		localStorage.setItem("bizName", businessName);
-	  }, "json").fail(function() {
-		console.log( "error" );		
-		//window.location.href = "staffInfo.html";
-	  })
+	  // $.post(dataUrl, JSON.stringify(formData), function(response){
+		// console.log("account created successfully!");
+		// window.location.href = "success.html";
+		// //set bizId and bizName
+		// localStorage.setItem("bizId", response.businessid);
+		// localStorage.setItem("bizName", businessName);
+	  // }, "json").fail(function() {
+		// console.log( "error" );		
+		// //window.location.href = "staffInfo.html";
+	  // });
 	});
 	
 	$('#staffSubmit').click(function submit(e) {
 		e.preventDefault();
+	$(this).addClass("loading");
 		var dataUrl = "https://orderitbackend.herokuapp.com/registerStaff";
 	  console.log("submitting staff data");
 	  var staffName = $("#staffName").val();
